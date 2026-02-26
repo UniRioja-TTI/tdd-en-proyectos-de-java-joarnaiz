@@ -4,7 +4,7 @@ import java.util.*;
 
 public class DBStub{
 
-    private Map<String,ToDo> listaTareas; //Mapa
+    private Map<Integer,ToDo> listaTareas; //Mapa
     private Set<String> listaEmail;
 
     public DBStub(){
@@ -28,4 +28,5 @@ public class DBStub{
     public void CREATE(String email){
         throw new UnsupportedOperationException("Clase aún no implementada.");
     }
+    public Set<String>READALLEmail(){throw new UnsupportedOperationException("Clase aún no implementada.");}
 }

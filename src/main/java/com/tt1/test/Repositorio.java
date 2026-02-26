@@ -9,7 +9,7 @@ public class Repositorio {
     public Repositorio(DBStub dbs) {
         this.dbs = dbs;
     }
-    public ToDo encontrar(String id){
+    public ToDo encontrar(int id){
         throw new UnsupportedOperationException("Clase aún no implementada.");
     }
 

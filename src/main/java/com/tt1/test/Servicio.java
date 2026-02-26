@@ -20,7 +20,7 @@ public class Servicio {
 
     public void agregarCorreo(String c){throw new UnsupportedOperationException("Clase aún no implementada.");}
 
-    public void marcarFinalizado(String id){
+    public void marcarFinalizado(int id){
         throw new UnsupportedOperationException("Clase aún no implementada.");
     }
 

@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class ToDo implements Serializable {
-    private String id;
+    private static int contadorIds= 1;
+    private int id;
     private String nombre;
     private String descripcion;
     private LocalDate fechaLimite; //String año mes dia
@@ -18,7 +19,7 @@ public class ToDo implements Serializable {
         throw new UnsupportedOperationException("Clase aún no implementada.");
     }
 
-    public String getId() { throw new UnsupportedOperationException("Clase aún no implementada.");}
+    public int getId() { throw new UnsupportedOperationException("Clase aún no implementada.");}
 
     public String getNombre(){
         throw new UnsupportedOperationException("Clase aún no implementada.");

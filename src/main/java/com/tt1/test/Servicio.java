@@ -6,7 +6,12 @@ import java.util.List;
 public class Servicio {
 
     private Repositorio repositorio;
-    private MailerStub mailer;
+    private IEmail mailer;
+
+    public Servicio(Repositorio repositorio,IEmail mailer) {
+        this.repositorio = repositorio;
+        this.mailer = mailer;
+    }
 
     public Servicio(Repositorio repositorio, MailerStub mailer)
     {

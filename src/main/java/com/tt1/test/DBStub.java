@@ -4,7 +4,7 @@ import java.util.*;
 
 public class DBStub{
 
-    private Map<Integer,ToDo> listaTareas; //Mapa
+    private Map<Integer,ToDo> listaTareas;
     private Set<String> listaEmail;
 
     public DBStub(){

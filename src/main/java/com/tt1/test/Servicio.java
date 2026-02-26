@@ -5,11 +5,14 @@ import java.util.List;
 
 public class Servicio {
 
-    //private IEmail email;
-    /*
-    public Servicio(IEmail email){ this.email=email;
+    private Repositorio repositorio;
+    private MailerStub mailer;
+
+    public Servicio(Repositorio repositorio, MailerStub mailer)
+    {
+        this.repositorio = repositorio;
+        this.mailer = mailer;
     }
-     */
 
     public void crearToDo(String nombre, LocalDate fechaLimite){
         throw new UnsupportedOperationException("Clase aún no implementada.");
@@ -17,7 +20,7 @@ public class Servicio {
 
     public void agregarCorreo(String c){throw new UnsupportedOperationException("Clase aún no implementada.");}
 
-    public void marcarFinalizado(){
+    public void marcarFinalizado(String id){
         throw new UnsupportedOperationException("Clase aún no implementada.");
     }
 

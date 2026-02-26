@@ -1,11 +1,16 @@
 package com.tt1.test;
 
-import java.util.List;
+import java.util.*;
 
 public class DBStub{
 
-    private List<ToDo> lista; //Mapa
-    private List<String> listaEmail;
+    private Map<String,ToDo> listaTareas; //Mapa
+    private Set<String> listaEmail;
+
+    public DBStub(){
+        listaTareas = new HashMap<>();
+        listaEmail = new HashSet<>();
+    }
 
     public void CREATE(ToDo td){
         throw new UnsupportedOperationException("Clase aún no implementada.");
@@ -16,9 +21,10 @@ public class DBStub{
     public void UPDATE(ToDo td){
         throw new UnsupportedOperationException("Clase aún no implementada.");
     }
-    public ToDo READ(){
+    public ToDo READ(ToDo td){
         throw new UnsupportedOperationException("Clase aún no implementada.");
     }
+    public List<ToDo> READALL(){throw new UnsupportedOperationException("Clase aún no implementada.");}
     public void CREATE(String email){
         throw new UnsupportedOperationException("Clase aún no implementada.");
     }

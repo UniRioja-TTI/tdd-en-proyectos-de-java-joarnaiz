@@ -1,6 +1,8 @@
 package com.tt1.test;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class Repositorio implements IRepositorio{
 
@@ -10,18 +12,35 @@ public class Repositorio implements IRepositorio{
         this.dbs = dbs;
     }
     public ToDo encontrar(int id){
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        for(ToDo t : dbs.READALL()){
+            if(t.getId() == id){
+                return t;
+            }
+        }
+        return null;
     }
 
     public void marcarCompletado(ToDo td){
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        td.setCompletado(true);
+        dbs.UPDATE(td);
     }
 
-    public List<ToDo> tareasSinCompletar(){throw new UnsupportedOperationException("Clase aún no implementada.");}
+    public List<ToDo> tareasSinCompletar(){
+        List<ToDo> sinC = new ArrayList<ToDo>();
+        for (ToDo t : dbs.READALL()){
+            if(!t.getCompletado()){
+                sinC.add(t);
+            }
+        }
+        return sinC;
+    }
     public void almacenar(ToDo td){
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        dbs.CREATE(td);
     }
     public void almacenar(String email){
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        dbs.CREATE(email);
+    }
+    public Set<String> listaCorreos(){
+        return dbs.READALLEmail();
     }
 }

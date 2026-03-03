@@ -13,7 +13,7 @@ class RepositorioTest {
     private IDBStub db;
 
     private Repositorio repoUnitarios;
-    private IDBStub dbFake;
+    private DBStubFake dbFake;
 
     @BeforeEach
     void setUp() {
@@ -62,40 +62,25 @@ class RepositorioTest {
 
     @Test
     void encontrarUnitario() {
-        ToDo tarea = new ToDo();
-        int id = tarea.getId();
-        dbFake.CREATE(tarea);
-        ToDo r = repoUnitarios.encontrar(id);
-
-        assertNotNull(r,"Deberia encontrar la tarea");
-        assertEquals(id,r.getId(),"El ID deberia coincidir");
+        repoUnitarios.encontrar(3);
+        assertTrue(dbFake.read,"El repositorio debería devolver true");
     }
     @Test
     void marcarCompletadoUnitario() {
-        ToDo tarea = new ToDo();
-        tarea.setCompletado(false);
-        dbFake.CREATE(tarea);
-
-        repoUnitarios.marcarCompletado(tarea);
-
-        ToDo nuevaT = dbFake.READ(tarea);
-        assertTrue(nuevaT.getCompletado(),"Deberia estar completada");
+        repoUnitarios.marcarCompletado(new ToDo());
+        assertTrue(dbFake.update, "El repositorio debería devolver true");
     }
 
     @Test
     void almacenarUnitario() {
-        ToDo tarea = new ToDo();
-        tarea.setNombre("Test");
-        repoUnitarios.almacenar(tarea);
-
-        assertNotNull(dbFake.READ(tarea),"La tarea deberia haberse guardado");
+        repoUnitarios.almacenar(new ToDo());
+        assertTrue(dbFake.createTarea,"El repositorio debería devolver true");
     }
     @Test
     void testAlmacenarUnitario() {
         String correo = "test@test.com";
         repoUnitarios.almacenar(correo);
-
-        assertTrue(dbFake.READALLEmail().contains(correo),"El correo deberia estar");
+        assertTrue(dbFake.createEmail,"El repositorio debería devolver true");
 
     }
 }

@@ -40,4 +40,9 @@ public class RepositorioFake implements IRepositorio {
     public void almacenar(String email) {
         this.almacenarEmailLlamado = true;
     }
+
+    @Override
+    public Set<String> listaCorreos() {
+        return Set.of();
+    }
 }

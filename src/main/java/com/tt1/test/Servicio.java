@@ -14,18 +14,47 @@ public class Servicio {
     }
 
     public void crearToDo(String nombre, LocalDate fechaLimite){
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        verificarAlertas();
+        ToDo tarea = new ToDo();
+        tarea.setNombre(nombre);
+        tarea.setFechaLimite(fechaLimite);
+
+        repositorio.almacenar(tarea);
     }
 
-    public void agregarCorreo(String c){throw new UnsupportedOperationException("Clase aún no implementada.");}
+    public void agregarCorreo(String c){
+        verificarAlertas();
+        repositorio.almacenar(c);}
 
     public void marcarFinalizado(int id){
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        verificarAlertas();
+        ToDo tarea = repositorio.encontrar(id);
+        if (tarea != null) {
+            tarea.setCompletado(true);
+            repositorio.marcarCompletado(tarea);
+        }
     }
 
     public List<ToDo> toDoSinCompletar(){
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        verificarAlertas();
+        return repositorio.tareasSinCompletar();
     }
 
+    private void verificarAlertas() {
+        List<ToDo> pendientes = repositorio.tareasSinCompletar();
+        LocalDate hoy = LocalDate.now();
+        boolean hayRetrasados = false;
+        for (ToDo t : pendientes) {
+            if (t.getFechaLimite() != null && t.getFechaLimite().isBefore(hoy)) {
+                hayRetrasados = true;
+                break;
+            }
+        }
+        if (hayRetrasados) {
+            for (String email : repositorio.listaCorreos()) {
+                mailer.enviarCorreo(email, "Alerta: Hay tareas pendientes cuya fecha límite ha pasado.");
+            }
+        }
+    }
 
 }

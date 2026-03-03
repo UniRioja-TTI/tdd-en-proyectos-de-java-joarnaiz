@@ -13,20 +13,20 @@ public class DBStub implements IDBStub{
     }
 
     public void CREATE(ToDo td){
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        listaTareas.put(td.getId(), td);
     }
     public void DELETE(ToDo td){
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        listaTareas.remove(td.getId());
     }
     public void UPDATE(ToDo td){
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        listaTareas.put(td.getId(), td);
     }
     public ToDo READ(ToDo td){
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        return listaTareas.get(td.getId());
     }
-    public List<ToDo> READALL(){throw new UnsupportedOperationException("Clase aún no implementada.");}
+    public List<ToDo> READALL(){return new ArrayList<>(listaTareas.values());}
     public void CREATE(String email){
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        listaEmail.add(email);
     }
-    public Set<String>READALLEmail(){throw new UnsupportedOperationException("Clase aún no implementada.");}
+    public Set<String>READALLEmail(){return listaEmail;}
 }

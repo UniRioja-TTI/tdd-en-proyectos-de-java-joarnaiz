@@ -2,11 +2,11 @@ package com.tt1.test;
 
 import java.util.List;
 
-public class Repositorio {
+public class Repositorio implements IRepositorio{
 
-    private DBStub dbs;
+    private IDBStub dbs;
 
-    public Repositorio(DBStub dbs) {
+    public Repositorio(IDBStub dbs) {
         this.dbs = dbs;
     }
     public ToDo encontrar(int id){

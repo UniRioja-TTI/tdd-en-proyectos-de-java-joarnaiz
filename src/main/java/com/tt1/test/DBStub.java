@@ -2,7 +2,7 @@ package com.tt1.test;
 
 import java.util.*;
 
-public class DBStub{
+public class DBStub implements IDBStub{
 
     private Map<Integer,ToDo> listaTareas;
     private Set<String> listaEmail;
